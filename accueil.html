@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Accueil Try Agence</title>
+	<link rel="shortcut icon" type="image/png" href="image/logo/favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style-accueil.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,400i,700" rel="stylesheet">
+	<script src="js/jquery-3.2.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<main>
+		<img src="image/logo/tryagence-logo.svg" alt="logo try agency" class="logo">
+		<h1>Try Agence, le <strong>Serious Game</strong> des agences web.</h1>
+		<form class="form-horizontal">
+		<div class="block">
+			<h2 id="submitBouton" class="color"> Inscription</h2>
+			<h2 id="logInBouton"> Connexion</h2>
+		</div>
+		<article id="inscription">
+
+			
+			<?php if (!isset($_SESSION['nom-inscription'])){ ?>
+			<form action="" method="POST" name="inscription">
+				<div class="form-group">
+				<label class="control-label" for="nom-inscription"></label>  
+			 	 <div class="col-md-6">
+			  		<input id="nom-inscription" name="nom-inscription" type="text" placeholder="Nom" class="form-control input-md" required="">
+			 	</div>
+			</div>
+
+			<div class="form-group">
+			  	<label class="control-label" for="prenom-inscription"></label>  
+		  		<div class="col-md-6">
+		  			<input id="prenom-inscription" name="prenom-inscription" type="text" placeholder="Prénom " class="form-control input-md" required="">
+		    
+		  		</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label" for="inscription-mail"></label>  
+		  		<div class="col-md-6">
+		  			<input id="inscription-mail" name="inscription-mail" type="text" placeholder="Adresse mail" class="form-control input-md" required="">
+		  		</div>
+			</div>
+
+			<div class="form-group">
+			  	<label class="control-label" for="inscription-password"></label>
+				<div class="col-md-6">
+				    <input id="inscription-password" name="inscription-password" type="password" placeholder="Mot de passe" class="form-control input-md" required="">  
+				</div>
+			</div>
+
+			<div class="form-group">
+			  	<label class="control-label" for="check-password"></label>
+				 <div class="col-md-6">
+				    <input id="check-password" name="check-password" type="password" placeholder="Retaper votre mot de passe" class="form-control input-md" required="">  
+				 </div>
+			</div>
+
+			<div class="form-group">
+			  	<label class="control-label" for="ville"></label>  
+			  	<div class="col-md-6">
+			  		<input id="ville" name="ville" type="text" placeholder="Ville" class="form-control input-md" required="">
+				</div>
+			</div>
+			
+
+
+			<div class="block-group">
+				<div class="form-group">
+			 	<label class="col-md-4 control-label norm" for="radios">Tu es un</label>
+				 	<div class="col-md-4">
+				  		<div class="radio">
+				    		<label for="radios-0">
+				      			<input type="radio" name="radios" id="eleve" value="1" checked="checked">
+				      			Elève
+				    		</label>
+						</div>
+				  		<div class="radio">
+				    		<label for="radios-1">
+				      			<input type="radio" name="radios" id="prof" value="2">
+				      			Professeur
+				    		</label>
+						</div>
+			  		</div>
+		  		<label class="control-label" for="next"></label>
+				  	<div class="container-fluid">
+					    <button id="next" class="btn btn-primary"> Confirmer</button>
+					</div>
+			</div>
+			</form>
+			<?php } ?>
+		</article>
+
+			</div>
+		<article id="connexion" class="active">
+			<form class="form-horizontal">
+				<fieldset>
+					<div class="form-group">
+					  	<label class="control-label" for="mail"></label>  
+					  	<div class="col-md-6">
+					  		<input id="mail" name="mail" type="text" placeholder="Adresse mail" class="form-control input-md" required=""> 
+					  	</div>
+					</div>
+					<div class="form-group">
+					  	<label class="control-label" for="mdp"></label>  
+					  	<div class="col-md-6">
+					  		<input id="mdp" name="mdp" type="text" placeholder="Mot de passe" class="form-control input-md" required="">   
+					  	</div>
+					</div>
+					 <div class="col-md-offset-3 col-md-6">
+						<button id="next" class="btn btn-primary"> Connexion </button>
+					</div>
+				</fieldset>
+			</form>
+		</article>
+	</main>
+	<div class="bouton-provisoire">
+	    <a class="btn btn-default" href="compte-eleve.php" role="button">Eleve</a>
+	    <a class="btn btn-default" href="compte-prof.php" role="button">Prof</a>
+  	</div>
+	<script type="text/javascript">	
+	var  submit = document.getElementById("inscription");
+	var interactionSub = document.getElementById("submitBouton");
+
+
+	var logIn = document.getElementById("connexion");
+	var interactionLog = document.getElementById("logInBouton");
+
+	interactionSub.addEventListener("click", log);
+    interactionLog.addEventListener("click", sub);
+
+	function sub (){
+		submit.classList.add("active");
+		logIn.classList.remove("active");
+		interactionSub.classList.remove("color");
+		interactionLog.classList.add("color");
+
+	}
+	function log (){
+		logIn.classList.add("active");
+		submit.classList.remove("active");
+		interactionSub.classList.add("color");
+		interactionLog.classList.remove("color");
+	}
+
+
+	</script>
+</body>
+</html>
